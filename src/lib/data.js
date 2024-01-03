@@ -15,7 +15,7 @@ export const deleteBlog = (id) => {
 };
 
 export const updateBlog = (id, title, content) => {
-  const blogIndex = blogs.findIndex((blog) => blog.id !== id);
+  const blogIndex = blogs.findIndex((blog) => blog.id === id);
 
   if (blogIndex !== -1) {
     blogs[blogIndex].title = title;

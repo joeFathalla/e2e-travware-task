@@ -14,13 +14,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <main className="w-full h-full">
-            <div className="md:w-2/4 sm:w-3/4 p-4 m-5 md:mx-auto rounded-lg bg-slate-800 drop-shadow-xl">
+          <main className="w-full h-full max-w-7xl mx-auto p-4 m-5">
+            <div className="md:w-2/4 sm:w-3/4  mx-auto rounded-lg bg-slate-800 drop-shadow-xl">
               <h1 className="text-slate-200 text-center text-2xl font-extrabold font-[verdana]">
                 E2E Travware Blog App
               </h1>
             </div>
-            {children}
+            <div className="max-w-2xl mx-auto">{children}</div>
           </main>
         </Providers>
       </body>
