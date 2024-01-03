@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
-import rootReducer from "./reducers";
+import blogsSlice from "./slices/blogsSlice";
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: [thunk],
+  reducer: {
+    blogs: blogsSlice,
+  },
 });
