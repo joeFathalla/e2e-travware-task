@@ -18,10 +18,11 @@ export default function Home() {
       {/* Link */}
       <div className="flex justify-center md:justify-end my-5">
         <Link
+          id="create-new-blog"
           href={"/create"}
           className=" md:w-1/4 sm:w-2/4 text-center rounded-md p-2  bg-slate-200 font-semibold"
         >
-          Add New Blog 🚀
+          Add New Blog
         </Link>
       </div>
       {/* Blogs */}

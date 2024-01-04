@@ -5,7 +5,7 @@ import Link from "next/link";
 const BlogList = ({ blogs }) => {
   return (
     <div>
-      {blogs.length > 0 ? (
+      {blogs?.length > 0 ? (
         <ul className="blog-list w-full flex  flex-col md:flex-row justify-center md:justify-start items-center md:flex-wrap">
           {blogs.map((blog) => (
             <li
@@ -14,7 +14,10 @@ const BlogList = ({ blogs }) => {
             >
               <div className="md:flex items-center my-3 flex-1">
                 <div className="mr-auto flex-1">
-                  <h2 className="mr-auto font-semibold md:text-sm">
+                  <h2
+                    className="mr-auto font-semibold md:text-sm"
+                    data-test="title-tag"
+                  >
                     {blog.title}
                   </h2>
                 </div>
@@ -33,7 +36,9 @@ const BlogList = ({ blogs }) => {
       ) : (
         <div className="blog-list w-full flex flex-col justify-center items-center">
           <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 text-center">
-            <h2 className="font-semibold">No Blogs, Start add new one </h2>
+            <h2 className="font-semibold" data-test="no-blog-tag">
+              No Blogs, Start add new one{" "}
+            </h2>
           </div>
         </div>
       )}

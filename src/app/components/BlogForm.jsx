@@ -86,6 +86,7 @@ const BlogForm = ({ isCreate, blog, createHandler, updateHandler }) => {
 
       <div className="w-full mt-10 text-center">
         <button
+          id="submit-button"
           type="submit"
           className="font-semibold px-4 py-2 shadow-xl bg-slate-200 rounded-lg m-auto hover:bg-slate-100"
         >

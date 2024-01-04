@@ -11,7 +11,7 @@ import BlogForm from "@/app/components/BlogForm";
 const AddBlog = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.blogs);
+  const { loading, error, isCreated } = useSelector((state) => state.blogs);
 
   const handleSubmit = (newBlog) => {
     dispatch(
@@ -28,7 +28,7 @@ const AddBlog = () => {
     } else if (loading === false) {
       if (error === true) {
         toast.error("Error Creating new blog", { id: "1" });
-      } else {
+      } else if (isCreated) {
         toast.success("Blog Posted Successfully", { id: "1" });
         router.push("/");
       }
@@ -36,7 +36,7 @@ const AddBlog = () => {
     return () => {
       toast.dismiss("1");
     };
-  }, [loading, error]);
+  }, [loading, error, isCreated]);
 
   return (
     <div>

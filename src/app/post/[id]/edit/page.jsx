@@ -12,7 +12,7 @@ import CustomLoading from "@/app/components/CustomLoading";
 const EditBlog = ({ params }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { blog, error, loading, fetchLoading } = useSelector(
+  const { blog, error, loading, fetchLoading, isUpdated } = useSelector(
     (state) => state.blogs
   );
   useEffect(() => {
@@ -30,15 +30,15 @@ const EditBlog = ({ params }) => {
     } else if (loading === false) {
       if (error === true) {
         toast.error("Error updating blog", { id: "1" });
-      } else {
+      } else if (isUpdated) {
         toast.success("Blog Updated Successfully", { id: "1" });
-        router.push("/post/${params.id}");
+        router.push(`/post/${params.id}`);
       }
     }
     return () => {
       toast.dismiss("1");
     };
-  }, [loading, error]);
+  }, [loading, error, isUpdated]);
 
   return (
     <div>

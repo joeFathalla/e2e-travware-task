@@ -4,7 +4,10 @@ import axios from "axios";
 const initialState = {
   blogs: null,
   blog: null,
-  loading: null,
+  loading: false,
+  isDeleted: false,
+  isCreated: false,
+  isUpdated: false,
   fetchLoading: false,
   error: null,
 };
@@ -46,6 +49,9 @@ const blogsSlice = createSlice({
     builder
       .addCase(fetchBlogs.pending, (state, action) => {
         state.fetchLoading = true;
+        state.isCreated = false;
+        state.blogs = null;
+        state.error = null;
       })
       .addCase(fetchBlogs.fulfilled, (state, action) => {
         state.fetchLoading = false;
@@ -66,11 +72,17 @@ const blogsSlice = createSlice({
       })
       .addCase(addNewBlog.fulfilled, (state, action) => {
         state.loading = false;
+        state.isCreated = true;
         state.error = null;
       })
 
       .addCase(fetchBlog.pending, (state, action) => {
         state.fetchLoading = true;
+        state.loading = null;
+        state.error = null;
+        state.blog = null;
+        state.isCreated = false;
+        state.isDeleted = false;
       })
       .addCase(fetchBlog.fulfilled, (state, action) => {
         state.fetchLoading = false;
@@ -91,6 +103,7 @@ const blogsSlice = createSlice({
       })
       .addCase(updateBlog.fulfilled, (state, action) => {
         state.loading = false;
+        state.isUpdated = true;
         state.error = null;
       })
 
@@ -103,6 +116,7 @@ const blogsSlice = createSlice({
       })
       .addCase(deleteBlog.fulfilled, (state, action) => {
         state.loading = false;
+        state.isDeleted = true;
         state.error = null;
       });
   },

@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 const SingleBlog = ({ params }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { blog, error, loading, fetchLoading } = useSelector(
+  const { blog, error, loading, fetchLoading, isDeleted } = useSelector(
     (state) => state.blogs
   );
   useEffect(() => {
@@ -28,12 +28,14 @@ const SingleBlog = ({ params }) => {
         <span>Are You sure you want to Delete this Blog ?</span>
         <div className="flex justify-around items-center w-full">
           <button
+            id="confirm-delete"
             className="font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg  m-auto mt-2 hover:bg-red-500 flex-1 mx-5"
             onClick={() => deleteHandler(t.id)}
           >
             Delete
           </button>
           <button
+            id="cancel-delete"
             className="font-semibold px-4 py-2 shadow-xl bg-blue-400 rounded-lg  m-auto mt-2 hover:bg-blue-500 flex-1 mx-5"
             onClick={() => toast.dismiss(t.id)}
           >
@@ -50,7 +52,7 @@ const SingleBlog = ({ params }) => {
     } else if (loading === false) {
       if (error === true) {
         toast.error("Error something went wrong", { id: "1" });
-      } else if (!error && loading === false) {
+      } else if (isDeleted) {
         toast.success("Blog Deleted Successfully", { id: "1" });
         router.push("/");
       }
@@ -58,7 +60,7 @@ const SingleBlog = ({ params }) => {
     return () => {
       toast.dismiss("1");
     };
-  }, [loading, error]);
+  }, [loading, error, isDeleted]);
 
   const deleteHandler = (id) => {
     toast.dismiss(id);
