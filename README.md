@@ -21,8 +21,7 @@ Getting Started
     ```
 
 
-    content_copy
-
+    
 2.  Navigate to the project directory:
 
     Bash
@@ -32,8 +31,7 @@ Getting Started
 
     ```
 
-    content_copy
-
+    
 3.  Install dependencies:
 
     Bash
@@ -43,8 +41,7 @@ Getting Started
 
     ```
 
-    content_copy
-
+    
 ### Running the Development Server
 
 1.  Start the development server:
@@ -55,8 +52,6 @@ Getting Started
     npm run dev
 
     ```
-
-    content_copy
 
 2.  Open http://localhost:3000 in your browser to view the application.
 
@@ -71,8 +66,6 @@ Getting Started
 
     ```
 
-    content_copy
-
 2.  Run Cypress tests:
 
     Bash
@@ -81,8 +74,6 @@ Getting Started
     npm run cypress:open
 
     ```
-
-    content_copy
 
 Additional Notes:
 -   Deployment: For deployment instructions, refer to the Next.js documentation: <https://nextjs.org/docs/deployment>
