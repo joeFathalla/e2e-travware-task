@@ -18,26 +18,21 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
 });
 
 export const addNewBlog = createAsyncThunk("blogs/addNewBlog", async (blog) => {
-  const response = await axios.post("http://localhost:3000/api/blogs", blog);
+  const response = await axios.post("/api/blogs", blog);
   return response.data;
 });
 export const fetchBlog = createAsyncThunk("blogs/fetchBlog", async (blogId) => {
-  const response = await axios.get(`http://localhost:3000/api/blogs/${blogId}`);
+  const response = await axios.get(`/api/blogs/${blogId}`);
   return response.data;
 });
 export const updateBlog = createAsyncThunk("blogs/updateBlog", async (data) => {
-  const response = await axios.put(
-    `http://localhost:3000/api/blogs/${data.id}`,
-    data.blog
-  );
+  const response = await axios.put(`/api/blogs/${data.id}`, data.blog);
   return response.data;
 });
 export const deleteBlog = createAsyncThunk(
   "blogs/deleteBlog",
   async (blogId) => {
-    const response = await axios.delete(
-      `http://localhost:3000/api/blogs/${blogId}`
-    );
+    const response = await axios.delete(`/api/blogs/${blogId}`);
     return response.data;
   }
 );
