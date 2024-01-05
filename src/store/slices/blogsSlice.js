@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const response = await axios.get("http://localhost:3000/api/blogs");
+  const response = await axios.get("/api/blogs");
   return response.data;
 });
 
